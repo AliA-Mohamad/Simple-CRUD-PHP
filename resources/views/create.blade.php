@@ -1,4 +1,4 @@
-<form action="save" method="post">
+<form action="{{ route('store') }}" method="post">
     @csrf
     <label for="name">type the task:</label>
     <input type="text" id="name" name="name">

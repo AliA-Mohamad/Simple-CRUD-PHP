@@ -9,8 +9,7 @@ class TasksController extends Controller
 {
     public function index() 
     {   
-        $tasks = Task::orderBy('name')->get();
-
+        $tasks = Task::get();
         return view('index')->with('tasks', $tasks);
     }
 
@@ -19,9 +18,29 @@ class TasksController extends Controller
         return view('create');
     }
 
-    public function save(Request $request)
+    public function store(Request $request)
     {
         Task::create($request->all());
         return redirect('/');
+    }
+
+    public function show(Request $request)
+    {
+
+    }
+
+    public function edit(string $id)
+    {
+        //
+    }
+
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    public function destroy(string $id)
+    {
+        //
     }
 }
