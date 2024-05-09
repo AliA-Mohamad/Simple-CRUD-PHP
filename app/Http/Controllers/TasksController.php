@@ -21,7 +21,7 @@ class TasksController extends Controller
     public function store(Request $request)
     {
         Task::create($request->all());
-        return redirect('/');
+        return to_route('index');
     }
 
     public function show(Request $request)
