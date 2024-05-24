@@ -15,8 +15,8 @@
                         <th scope="col"> ID </th>
                         <th scope="col"> Name </th>
                         <th scope="col"> Desc </th>
-                        <th scope="col" class=" text-center"> 
-                            <a href="{{ route('create') }}" class="btn btn-primary"> add a task </a>
+                        <th scope="col" class="text-center"> 
+                            <a href="{{ route('tasks.create') }}" class="btn btn-primary"> add a task </a>
                         </th>
                     </tr>
                 </thead>
@@ -27,8 +27,12 @@
                             <td> {{ $task->name }} </td>
                             <td> {{ $task->description }} </td>
                             <td class="text-center"> 
-                                <a href="" class="btn btn-warning">▢</a>
-                                <a href="" class="btn btn-danger">✕</a>
+                                <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning">▢</a>
+                                <a href="{{ route('tasks.destroy', $task->id) }}" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $task->id }}').submit();">✕</a>
+                                <form id="delete-form-{{ $task->id }}" action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -36,6 +40,5 @@
             </table>
         </div>
     </div>
-
 
 @endsection

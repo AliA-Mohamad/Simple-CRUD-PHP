@@ -10,7 +10,7 @@ class TasksController extends Controller
     public function index() 
     {   
         $tasks = Task::get();
-        return view('index')->with('tasks', $tasks);
+        return view('index', ['tasks' => $tasks]);
     }
 
     public function create()
@@ -21,7 +21,7 @@ class TasksController extends Controller
     public function store(Request $request)
     {
         Task::create($request->all());
-        return to_route('index');
+        return to_route('tasks.index');
     }
 
     public function show(Request $request)
@@ -31,7 +31,8 @@ class TasksController extends Controller
 
     public function edit(string $id)
     {
-        //
+        $task = Task::findOrFail($id);
+        return view('update', ['task' => $task]);
     }
 
     public function update(Request $request, string $id)
@@ -41,6 +42,7 @@ class TasksController extends Controller
 
     public function destroy(string $id)
     {
-        //
+        return to_route('tasks.index');
+
     }
 }

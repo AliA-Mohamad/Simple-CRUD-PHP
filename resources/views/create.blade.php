@@ -13,7 +13,7 @@
 
         <span class="mb-5 w-100 text-center fs-4">Make your task</span>
 
-        <form action="{{ route('store') }}" method="post">
+        <form action="{{ route('tasks.store') }}" method="post">
             @csrf
             <div class="input-group input-group-sm mb-5 mt-1">
                 <span class="input-group-text"> Task </span>
