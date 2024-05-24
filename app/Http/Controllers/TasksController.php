@@ -50,6 +50,7 @@ class TasksController extends Controller
 
     public function destroy(string $id)
     {
+        Task::destroy($id);
         return to_route('tasks.index');
     }
 }
