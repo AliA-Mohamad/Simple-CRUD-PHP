@@ -23,7 +23,7 @@
 
             <div class="input-group input-group-sm mb-5 ">
                 <span class="input-group-text"> Description </span>
-                <input type="text" class="form-control" id="description" name="description" placeholder="type..." value="{{ $task->name }}">
+                <input type="text" class="form-control" id="description" name="description" placeholder="type..." value="{{ $task->description }}">
             </div>
             <div>
                 <button type="submit" class="btn btn-success w-100">save</button>
