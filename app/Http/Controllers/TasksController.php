@@ -37,12 +37,19 @@ class TasksController extends Controller
 
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+        ]);
+
+        $task = Task::findOrFail($id);
+        $task->update($validatedData);
+
+        return to_route('tasks.index');
     }
 
     public function destroy(string $id)
     {
         return to_route('tasks.index');
-
     }
 }
